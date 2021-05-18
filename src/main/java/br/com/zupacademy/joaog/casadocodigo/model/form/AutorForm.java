@@ -30,6 +30,7 @@ public class AutorForm {
 	
 	public String getEmail() {
 		return this.email;
+		
 	}
 	
 }

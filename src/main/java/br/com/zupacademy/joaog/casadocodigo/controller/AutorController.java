@@ -35,10 +35,7 @@ public class AutorController {
 	@PostMapping
 	@Transactional
 	public ResponseEntity<?> adicionaAutor(@RequestBody @Valid AutorForm autorForm) {
-		System.out.println("OII");
 		Autor autor = autorForm.toModel();
-		// System.out.println(autorRepository.existsByEmailIgnoreCase("joao@joao.com.br"));
-		System.out.println("OII");
 		autorRepository.save(autor);
 		return ResponseEntity.ok().build();
 	}
