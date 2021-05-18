@@ -1,6 +1,5 @@
 package br.com.zupacademy.joaog.casadocodigo.model;
 
-import java.sql.Timestamp;
 import java.time.LocalDateTime;
 
 import javax.persistence.Entity;
@@ -20,7 +19,7 @@ public class Autor {
 	private Long id;
 	@NotNull @NotEmpty
 	private String nome;
-	@Email @NotNull @NotEmpty
+	@Email @NotEmpty
 	private String email;
 	@NotBlank @Size(max=400)
 	private String descricao;
@@ -33,6 +32,15 @@ public class Autor {
 		this.email = email;
 		this.descricao = descricao;
 		this.instanteRegistro = LocalDateTime.now();
+	}
+	
+	@Deprecated
+	public Autor() {
+		
+	}
+
+	public String getEmail() {
+		return this.email;
 	}
 	
 }
