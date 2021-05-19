@@ -11,13 +11,17 @@ import javax.validation.Payload;
 
 @Retention(RUNTIME)
 @Target(FIELD)
-@Constraint(validatedBy = {CategoriaUnicaValidator.class})
-public @interface CategoriaUnica {
-	
-	String message() default "Já existe uma categoria com o nome informado";
+@Constraint(validatedBy = { UnicoGenericoValidator.class })
+public @interface Unico {
 
-	Class<?>[] groups() default { };
+	String message() default "";
 
-	Class<? extends Payload>[] payload() default { };
+	Class<?>[] groups() default {};
+
+	Class<? extends Payload>[] payload() default {};
+
+	Class<?> classe();
+
+	String atributo();
 
 }

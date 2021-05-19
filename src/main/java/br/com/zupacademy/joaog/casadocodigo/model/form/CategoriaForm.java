@@ -6,14 +6,14 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import br.com.zupacademy.joaog.casadocodigo.model.Categoria;
-import br.com.zupacademy.joaog.casadocodigo.validator.CategoriaUnica;
+import br.com.zupacademy.joaog.casadocodigo.validator.Unico;
 
 public class CategoriaForm {
-	
-	@CategoriaUnica
+
+	@Unico(atributo = "nome", classe = Categoria.class)
 	@NotBlank
 	private String nome;
-	
+
 	@JsonCreator
 	public CategoriaForm(@NotBlank @JsonProperty("nome") String nome) {
 		this.nome = nome;
