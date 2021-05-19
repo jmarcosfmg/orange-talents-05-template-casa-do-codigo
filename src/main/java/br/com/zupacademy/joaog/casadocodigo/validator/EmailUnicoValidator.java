@@ -15,7 +15,6 @@ public class EmailUnicoValidator implements Validator{
 	private AutorRepository autorRepository;
 	@Override
 	public boolean supports(Class<?> clazz) {
-		System.out.println("Classe = "+clazz);
 		return AutorForm.class.isAssignableFrom(clazz);
 	}
 

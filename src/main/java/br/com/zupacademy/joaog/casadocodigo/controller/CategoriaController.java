@@ -25,11 +25,8 @@ public class CategoriaController {
 	@PostMapping
 	public ResponseEntity<?> criaCategoria(@RequestBody @Valid CategoriaForm categoriaForm){
 		try{
-			System.out.println("OI");
 			Categoria categoria = categoriaForm.toModel();
-			System.out.println("OI2");
 			entityManager.persist(categoria);
-			System.out.println("OI3");
 			return ResponseEntity.ok(categoria);
 		}catch(Exception e) { 
 			return ResponseEntity.badRequest().build();
