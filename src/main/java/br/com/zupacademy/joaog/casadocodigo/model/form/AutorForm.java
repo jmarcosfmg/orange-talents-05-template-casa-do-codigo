@@ -15,7 +15,6 @@ public class AutorForm {
 	private String email;
 	@NotBlank @Size(max=400)
 	private String descricao;	
-
 	
 	public AutorForm(@NotNull @NotEmpty String nome, @Email @NotNull @NotEmpty String email,
 			@NotNull @Size(max = 400) String descricao) {
