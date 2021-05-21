@@ -15,13 +15,17 @@ import javax.validation.constraints.Size;
 @Entity
 public class Autor {
 
-	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	@NotNull @NotEmpty
+	@NotNull
+	@NotEmpty
 	private String nome;
-	@Email @NotEmpty
+	@Email
+	@NotEmpty
 	private String email;
-	@NotBlank @Size(max=400)
+	@NotBlank
+	@Size(max = 400)
 	private String descricao;
 	@NotNull
 	private LocalDateTime instanteRegistro;
@@ -33,14 +37,13 @@ public class Autor {
 		this.descricao = descricao;
 		this.instanteRegistro = LocalDateTime.now();
 	}
-	
+
 	@Deprecated
 	public Autor() {
-		
+
 	}
 
 	public String getEmail() {
 		return this.email;
 	}
-	
 }
