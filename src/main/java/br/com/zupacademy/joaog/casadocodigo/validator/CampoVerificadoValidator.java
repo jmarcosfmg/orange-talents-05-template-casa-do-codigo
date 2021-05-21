@@ -5,8 +5,6 @@ import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
 
 public class CampoVerificadoValidator implements ConstraintValidator<CampoVerificado, Long> {
 
@@ -29,9 +27,8 @@ public class CampoVerificadoValidator implements ConstraintValidator<CampoVerifi
 			return true;
 		} catch (NoResultException e) {
 			context.disableDefaultConstraintViolation();
-			context.buildConstraintViolationWithTemplate(
-					"Não foi encontrado " + this.classe.getSimpleName() + " com " + this.atributo + " " + value.toString())
-					.addConstraintViolation();
+			context.buildConstraintViolationWithTemplate("Não foi encontrado " + this.classe.getSimpleName() + " com "
+					+ this.atributo + " " + value.toString()).addConstraintViolation();
 			return false;
 		}
 

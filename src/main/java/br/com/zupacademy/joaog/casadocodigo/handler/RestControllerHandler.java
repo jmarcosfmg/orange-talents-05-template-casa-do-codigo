@@ -5,6 +5,8 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
+import org.springframework.core.Ordered;
+import org.springframework.core.annotation.Order;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -26,6 +28,9 @@ public class RestControllerHandler{
 		List<MensagemErro> mensagens = new ArrayList<>();
 		ex.getBindingResult().getFieldErrors().forEach(erro ->{
 			mensagens.add(new MensagemErro(erro.getField(), messageSource.getMessage(erro, request.getLocale())));
+		});
+		ex.getBindingResult().getGlobalErrors().forEach(erro ->{
+			mensagens.add(new MensagemErro(erro.getObjectName().toString(), messageSource.getMessage(erro, request.getLocale())));
 		});
 		return ResponseEntity.badRequest().body(mensagens);
 	}
