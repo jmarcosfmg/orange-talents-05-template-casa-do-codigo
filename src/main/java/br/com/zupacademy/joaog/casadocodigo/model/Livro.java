@@ -4,6 +4,8 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
@@ -17,6 +19,10 @@ import org.hibernate.validator.constraints.ISBN;
 
 @Entity
 public class Livro {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 
 	@NotBlank
 	private String titulo;
@@ -36,7 +42,6 @@ public class Livro {
 	private int numeroDePaginas;
 
 	@ISBN
-	@Id
 	private String isbn;
 
 	@Future
