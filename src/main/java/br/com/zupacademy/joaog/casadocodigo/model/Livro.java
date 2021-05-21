@@ -20,6 +20,7 @@ import org.hibernate.validator.constraints.ISBN;
 @Entity
 public class Livro {
 
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -80,6 +81,37 @@ public class Livro {
 	
 	public String getTitulo() {
 		return this.titulo;
+	}
+	public String getResumo() {
+		return resumo;
+	}
+
+	public String getSumario() {
+		return sumario;
+	}
+
+	public BigDecimal getPreco() {
+		return preco;
+	}
+
+	public int getNumeroDePaginas() {
+		return numeroDePaginas;
+	}
+
+	public String getIsbn() {
+		return isbn;
+	}
+
+	public LocalDate getLancamento() {
+		return lancamento;
+	}
+
+	public Categoria getCategoria() {
+		return categoria;
+	}
+
+	public Autor getAutor() {
+		return autor;
 	}
 
 }

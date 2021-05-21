@@ -4,18 +4,21 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 import javax.validation.Valid;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.zupacademy.joaog.casadocodigo.model.Livro;
+import br.com.zupacademy.joaog.casadocodigo.model.dto.DetalhesLivroDto;
 import br.com.zupacademy.joaog.casadocodigo.model.dto.LivroDto;
 import br.com.zupacademy.joaog.casadocodigo.model.form.LivroForm;
 
@@ -42,6 +45,20 @@ public class LivroController {
 				.map(LivroDto::new).collect(Collectors.toList());
 		return resultado;
 
+	}
+
+	
+	@GetMapping(path = "/{id}")
+	public ResponseEntity<DetalhesLivroDto> detalhaLivro(@PathVariable Long id) {
+		try {
+			
+			Livro livro = em.createQuery("Select l from Livro l", Livro.class).getSingleResult();
+			DetalhesLivroDto resultado = new DetalhesLivroDto(livro);
+			return ResponseEntity.ok(resultado);
+		}
+		catch(NoResultException e) {
+			return ResponseEntity.notFound().build();
+		}
 	}
 
 }
